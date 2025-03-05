@@ -6,6 +6,23 @@
 //   }
 // };
 
+// function deepClone(args) {
+//   let newObj = {};
+//   if(!args) return newObj;
+
+//   const keys = Object.keys(args);
+//   const values = Object.values(args);
+//   for(let i=0; i<keys.length; i++){
+//     newObj[keys[i]] = values[i];
+//   }
+//   return newObj
+  
+// }
+
+
+// let obj2 =[67890, "tyuio", "ghjkl","tyuio"]
+
+
 const obj = {
   name: "Niraj Kumar",
   details : {
@@ -17,7 +34,7 @@ const obj = {
   }
 };
 
-// let obj2 =[67890, "tyuio", "ghjkl","tyuio"]
+
 
 
 function deepClone(args) {
@@ -44,15 +61,3 @@ console.log("deepClone",newObj)
 console.log("original",obj)
 
 
-// function deepClone(args) {
-//   let newObj = {};
-//   if(!args) return newObj;
-
-//   const keys = Object.keys(args);
-//   const values = Object.values(args);
-//   for(let i=0; i<keys.length; i++){
-//     newObj[keys[i]] = values[i];
-//   }
-//   return newObj
-  
-// }
