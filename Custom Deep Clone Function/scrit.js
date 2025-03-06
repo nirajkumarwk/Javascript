@@ -38,9 +38,10 @@ function deepClone(args) {
 
   const keys = Object.keys(args);
   const values = Object.values(args);
+
   for (let i = 0; i < keys.length; i++) {
     if (typeof values[i] === "object") {
-      // console.log("inside the values")
+      
       newObj[keys[i]] = deepClone(values[i]);
     } else {
       newObj[keys[i]] = values[i];
