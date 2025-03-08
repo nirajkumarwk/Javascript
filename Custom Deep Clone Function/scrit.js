@@ -1,3 +1,4 @@
+
 const obj = {
   name: "Niraj Kumar",
   details: {
@@ -9,10 +10,10 @@ const obj = {
   },
 };
 
+
 function deepClone(args) {
   let newObj = {};
   if (typeof args !== "object") return args;
-
   for (const [key, value] of Object.entries(args)) {
     if (typeof value === "object") {
       newObj[key] = deepClone(value);
@@ -20,7 +21,6 @@ function deepClone(args) {
       newObj[key] = value;
     }
   }
-
   return newObj;
 }
 
