@@ -1,5 +1,3 @@
-
-
 function asyncFunction(callback, time){
    return new Promise((resolve) => {
     setTimeout(() => {

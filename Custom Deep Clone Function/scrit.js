@@ -1,26 +1,3 @@
-// const obj = {
-//   name: "Niraj Kumar",
-//   details : {
-//     age: 24,    
-//   }
-// };
-
-
-// function deepClone(args) {
-//   let newObj = {};
-//   if(!args) return newObj;
-
-//   const keys = Object.keys(args);
-//   const values = Object.values(args);
-//   for(let i=0; i<keys.length; i++){
-//     newObj[keys[i]] = values[i];
-//   }
-//   return newObj
-  
-// }
-
-// let obj2 =[67890, "tyuio", "ghjkl","tyuio"]
-
 const obj = {
   name: "Niraj Kumar",
   details: {
@@ -34,25 +11,20 @@ const obj = {
 
 function deepClone(args) {
   let newObj = {};
-  if (!args) return newObj;
+  if (typeof args !== "object") return args;
 
-  const keys = Object.keys(args);
-  const values = Object.values(args);
-
-  for (let i = 0; i < keys.length; i++) {
-    if (typeof values[i] === "object") {
-      
-      newObj[keys[i]] = deepClone(values[i]);
+  for (const [key, value] of Object.entries(args)) {
+    if (typeof value === "object") {
+      newObj[key] = deepClone(value);
     } else {
-      newObj[keys[i]] = values[i];
+      newObj[key] = value;
     }
   }
+
   return newObj;
 }
 
 const newObj = deepClone(obj);
-newObj.details.social.Instagram = "My Instagram";
-console.log("deepClone", newObj);
-console.log("original", obj);
-
-
+newObj.details.social.x = "Account";
+console.log("original object", obj);
+console.log("new object", newObj);
