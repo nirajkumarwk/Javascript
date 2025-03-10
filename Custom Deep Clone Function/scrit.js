@@ -12,7 +12,7 @@ const obj = {
 
 
 function deepClone(args) {
-  let newObj = {};
+  const newObj = {};
   if (typeof args !== "object") return args;
   for (const [key, value] of Object.entries(args)) {
     if (typeof value === "object") {
