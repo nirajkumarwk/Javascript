@@ -197,7 +197,7 @@ console.log(primeNumber(3));
 
 
 
-// 4. Check if a number is a power of another number
+// // 4. Check if a number is a power of another number
 
 function power(x, y){
     if(x === 1) return y === 1;
@@ -208,3 +208,10 @@ function power(x, y){
 }
 
 console.log(power(1, 20))
+
+
+//. 6. Check whether triangle is valid or not if sides are given
+
+function valid(a, b, c){
+   return (a + b > c) && (a + c > b) && (b + c > a);
+}
