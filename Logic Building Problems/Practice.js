@@ -257,27 +257,110 @@
 //   }
 // }
 
-function squareRoot(n) {
-  let low = 1;
-  let high = n;
-  let ans = 1;
+// function squareRoot(n) {
+//   let low = 1;
+//   let high = n;
+//   let ans = 1;
 
-  if (n === 0 || n === 1) return n;
+//   if (n === 0 || n === 1) return n;
 
-  while (low <= high) {
-    let mid = Math.floor((low + high) / 2);
+//   while (low <= high) {
+//     let mid = Math.floor((low + high) / 2);
 
-    if (mid * mid === n) return mid;
+//     if (mid * mid === n) return mid;
 
-    if (mid * mid < n) {
-      low = mid + 1;
-      ans = mid;
-    }
-    else {
-      high = mid - 1;
-    }
-  }
-  return ans;
-}
+//     if (mid * mid < n) {
+//       low = mid + 1;
+//       ans = mid;
+//     }
+//     else {
+//       high = mid - 1;
+//     }
+//   }
+//   return ans;
+// }
 
-console.log(squareRoot(60));
+// console.log(squareRoot(60));
+
+
+
+// 10. Sum of squares of first n natural numbers
+
+
+// function squareSum(n) {
+//     let sum = 0;
+
+//     if(typeof n !== "number" || n<0) return "Provide the a valid number";
+    
+//     if(n === 1 ) return 1;
+//     for (let i = 1; i <= n; i++) {
+//         sum += i**2; 
+//     }
+//     return sum;
+// }
+
+// function squareSum(n) {
+//     if(typeof n !== "number" || n<0) return "Please Enter Valid number";
+
+//     if( n === 1 ) {return 1;}
+//     else {
+//         return n * n + squareSum( n-1 );
+//     }
+// }
+
+// console.log(squareSum(8));
+
+
+// 11. Pair Cube Count
+
+// function cubicPair(n) {
+//     let count = 0;
+//     for(let i = 1; i<n; i++) {
+//         for(let j = 0; j<n; j++) {
+//             let sum = i**3 + j**3;
+//             if(sum === n) count++
+//         }
+//     }
+//     return count;
+// }
+
+// console.log(cubicPair(2))
+
+
+// 12. Perfect Number
+
+// function perfectNumber(n) {
+//     let sum = 0;
+//     for(let i = 1; i<n; i++){
+//        if (n%i === 0) {
+//        sum += i;
+//        }
+//     }
+
+//     if(sum === n) {return true}
+//     else {
+//         return false;
+//     }
+// }
+
+// console.log(perfectNumber(6))
+
+
+// 13. Fizz Buzz
+
+// function fizz(n) {
+//   let final = [];
+//   for (let i = 1; i <= n; i++) {
+//     let s = "";
+//     if( i%3 === 0) s +="Fizz";
+//     if( i%5 === 0) s +="Buzz"
+//     if( s === "") s += i;
+//     final.push(s);
+// }
+// return final
+
+// }
+// console.log(fizz(20));
+
+
+
