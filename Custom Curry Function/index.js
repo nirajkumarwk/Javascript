@@ -18,3 +18,24 @@ const join = (a, b, c) => {
  console.log(curriedJoin(1, 2, 3)) // '1_2_3'
  console.log(curriedJoin(1)(2, 3)) // '1_2_3'
  console.log(curriedJoin(1, 2)(3)) // '1_2_3'
+
+
+ // Create sum()
+
+ function sum(num) {
+   function inner(num2) {
+     return sum(num + num2);
+   }
+
+   inner.valueOf = function () {
+     return num;
+   };
+   return inner;
+ }
+ 
+
+ const sum1 = sum(1)
+console.log(sum1(2) == 3) // true
+console.log(sum1(3) == 4) // true
+console.log(sum(1)(2)(3)) == 6 // true
+console.log(sum(5)(-1)(2) == 6) // true
