@@ -81,3 +81,37 @@ window.clearAllTimeout = function() {
 })();
 
 
+// undefined to null
+
+function undefinedToNull(arg) {
+  if (Array.isArray(arg)) {
+    return arg.map((value) =>
+      value === undefined ? null : undefinedToNull(value)
+    );
+  }
+
+  if (typeof arg === "object" && arg !== null) {
+    let ne = Array.isArray(arg) ? [] : {};
+    for (const [key, value] of Object.entries(arg)) {
+      if (typeof value === "object") {
+        ne[key] = undefinedToNull(value);
+      }
+
+       else if (value === undefined) {
+        ne[key] = null;
+        console.log((ne[key] = null));
+      } else {
+        ne[key] = value;
+      }
+    }
+    return ne;
+  } else {
+    return arg;
+  }
+  
+}
+
+console.log(undefinedToNull([undefined]))
+console.log(undefinedToNull({undefined}))
+console.log(undefinedToNull({a: undefined, b: 'BFE.dev'}))
+console.log(undefinedToNull({a: ['BFE.dev', undefined, 'bigfrontend.dev']}))
