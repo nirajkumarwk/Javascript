@@ -138,9 +138,36 @@ const debouncedSearch = debounce((query) => {
     console.log("Searching for:", query);
   }, 300);
   
-  // Simulate user typing fast
+  
   debouncedSearch("H");
   debouncedSearch("He");
   debouncedSearch("Hel");
   debouncedSearch("Hell");
   debouncedSearch("Hello");
+
+
+// implement Array.prototype.flat()
+
+function flat(arr, depth = 1) {
+  let array = [];
+
+  arr.forEach((item) => {
+    if (Array.isArray(item) && depth > 0) {
+      array.push(...flat(item, depth - 1));
+    } else array.push(item);
+  });
+  return array;
+}
+
+const arr = [1, [2], [3, [4, [5, [6, [7, 8, [9, 10]]]]]]];
+
+console.log(flat([1, 2, , , undefined]));
+
+console.log(
+  flat(
+    [1, 2, "empty", "empty", undefined, [3, 4, [5, 6, [7, 8, [9, 10]]]]],
+    Infinity
+  )
+);
+
+console.log(flat(arr, Infinity));
