@@ -1,3 +1,44 @@
+// implement clearAllTimeout()
+
+(() => {
+    const ids = [];
+    const originalSetTimeout = window.setTimeout;
+    const originalClearTimeout = window.clearTimeout;
+    
+    window.setTimeout = function (callback, delay, ...args) {
+      const id = originalSetTimeout(() => {
+        callback(...args);
+    
+        const index = ids.indexOf(id);
+        if (index !== -1) {
+          ids.splice(index, 1);
+        }
+      }, delay);
+      ids.push(id);
+      return id;
+    };
+    
+    window.clearTimeout = function (id) {
+      const indexId = ids.indexOf(id);
+      if (indexId !== -1) {
+        ids.splice(indexId, 1);
+        originalClearTimeout(id);
+      }
+      return indexId;
+    };
+    
+    window.clearAllTimeout = function() {
+      ids.forEach((id) => {
+        originalClearTimeout(id);
+      });
+    
+      ids.length = 0;
+    }
+    })();
+
+
+
+
 //  implement curry()
 
 function curry(fn) {
@@ -42,44 +83,6 @@ console.log(sum(5)(-1)(2) == 6) // true
 
 
 
-// implement clearAllTimeout()
-
-(() => {
-    const ids = [];
-const originalSetTimeout = window.setTimeout;
-const originalClearTimeout = window.clearTimeout;
-
-window.setTimeout = function (callback, delay, ...args) {
-  const id = originalSetTimeout(() => {
-    callback(...args);
-
-    const index = ids.indexOf(id);
-    if (index !== -1) {
-      ids.splice(index, 1);
-    }
-  }, delay);
-  ids.push(id);
-  return id;
-};
-
-window.clearTimeout = function (id) {
-  const indexId = ids.indexOf(id);
-  if (indexId !== -1) {
-    ids.splice(indexId, 1);
-    originalClearTimeout(id);
-  }
-  return indexId;
-};
-
-window.clearAllTimeout = function() {
-  ids.forEach((id) => {
-    originalClearTimeout(id);
-  });
-
-  ids.length = 0;
-}
-})();
-
 
 // undefined to null
 
@@ -115,3 +118,29 @@ console.log(undefinedToNull([undefined]))
 console.log(undefinedToNull({undefined}))
 console.log(undefinedToNull({a: undefined, b: 'BFE.dev'}))
 console.log(undefinedToNull({a: ['BFE.dev', undefined, 'bigfrontend.dev']}))
+
+
+// Implement basic debounce()
+
+function debounce(func, wait) {
+    let timer = null;
+
+    return function (...args) {
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+            func(...args);
+        }, wait);
+    }
+
+}
+
+const debouncedSearch = debounce((query) => {
+    console.log("Searching for:", query);
+  }, 300);
+  
+  // Simulate user typing fast
+  debouncedSearch("H");
+  debouncedSearch("He");
+  debouncedSearch("Hel");
+  debouncedSearch("Hell");
+  debouncedSearch("Hello");
